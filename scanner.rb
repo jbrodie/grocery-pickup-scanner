@@ -34,27 +34,19 @@ Capybara.configure do |config|
   config.default_driver = :selenium
 end
 
-# CPANEL Server Configuration
+# Standard Email Configuration
 options = { :address              => ENV['SERVER_ADDRESS'],
             :port                 => ENV['SERVER_PORT'],
             :domain               => ENV['SERVER_DOMAIN'],
             :user_name            => ENV['USER_NAME'],
             :password             => ENV['PASSWORD'],
             :authentication       => :login,
-            :enable_starttls_auto => true,
             :openssl_verify_mode  => OpenSSL::SSL::VERIFY_NONE
           }
 
-# GMAIL Server Configuration
-# options = { :address              => ENV['SERVER_ADDRESS'],
-#             :port                 => ENV['SERVER_PORT'],
-#             :domain               => ENV['SERVER_DOMAIN'],
-#             :user_name            => ENV['USER_NAME'],
-#             :password             => ENV['PASSWORD'],
-#             authentication:       :login,
-#             ssl:                  true,
-#             openssl_verify_mode:  OpenSSL::SSL::VERIFY_NONE
-#           }
+          # Mail Server Specific
+options.merge!(:enable_starttls_auto => true) if ENV['SERVER_TYPE'] == "CPANEL"
+options.merge!(:ssl => true) if ENV['SERVER_TYPE'] == "GMAIL"
 
 Mail.defaults do
   delivery_method :smtp, options
