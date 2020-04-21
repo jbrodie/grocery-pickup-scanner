@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+
+gem 'byebug', '~> 11.1', '>= 11.1.2'
+gem 'capybara', '~> 3.32', '>= 3.32.1'
+gem 'capybara-screenshot', '~> 1.0', '>= 1.0.24'
+gem 'dotenv', '~> 2.7', '>= 2.7.5'
+gem 'json', '~> 2.3'
+gem 'mail', '~> 2.7', '>= 2.7.1'
+gem 'openssl', '~> 2.1', '>= 2.1.2'
+gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+gem 'webdrivers', '~> 4.3'

@@ -1,0 +1,26 @@
+{
+  "real_canadian_superstore": {
+    "url": "https://www.realcanadiansuperstore.ca/store-locator?type=store&icta=store-locator",
+    "stores": [{
+        "address": "3045 Mavis Rd, Mississauga, Ontario L5C 1T7",
+        "store_number": 2841
+      },
+      {
+        "address": "3050 Argentia Rd, Mississauga, ON L5N 8E1",
+        "store_number": 1080
+      }
+    ]
+  },
+  "loblaws": {
+    "url": "https://www.loblaws.ca/store-locator?type=store&icta=store-locator",
+    "stores": [{
+        "address": "5970 Mclaughlin Rd, Mississauga, Ontario L5R 3X9",
+        "store_number": 1003
+      },
+      {
+        "address": "5010 Glen Erin Dr, Mississauga, Ontario L5M 6J3",
+        "store_number": 1011
+      }
+    ]
+  }
+}
