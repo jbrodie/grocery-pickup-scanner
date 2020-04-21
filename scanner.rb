@@ -10,7 +10,7 @@ require 'webdrivers'
 
 Dotenv.load
 
-targets = JSON.parse(File.read('targets.json'))
+targets = JSON.parse(File.read(ENV['TARGET_FILE']))
 
 Capybara.javascript_driver = :chrome
 
@@ -19,11 +19,11 @@ Capybara.register_driver :selenium do |app|
     browser: :chrome,
     options: Selenium::WebDriver::Chrome::Options.new(
       args: %w[
+        headless
         disable-gpu
         incognito
         disable-geolocation
         disable-popup-blocking
-        start-maximized
       ]
     )
   )
