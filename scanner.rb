@@ -28,6 +28,7 @@ Capybara.register_driver :selenium do |app|
     )
   )
 end
+
 Capybara.javascript_driver = :chrome
 Capybara.configure do |config|  
   config.default_max_wait_time = 20 # seconds
@@ -44,7 +45,7 @@ options = { :address              => ENV['SERVER_ADDRESS'],
             :openssl_verify_mode  => OpenSSL::SSL::VERIFY_NONE
           }
 
-          # Mail Server Specific
+# Mail Server Specific
 options.merge!(:enable_starttls_auto => true) if ENV['SERVER_TYPE'] == "CPANEL"
 options.merge!(:ssl => true) if ENV['SERVER_TYPE'] == "GMAIL"
 
