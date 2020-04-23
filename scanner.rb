@@ -33,7 +33,7 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.configure do |config|  
-  config.default_max_wait_time = 20 # seconds
+  config.default_max_wait_time = 30 # seconds
   config.default_driver = :selenium
   config.save_path = 'tmp/capybara'
 end
@@ -76,7 +76,10 @@ targets.each do |target|
     browser.find('a[data-auid="store-locator-link"]', match: :first, visible: false).click
     browser.find('.location-search__search__input', visible: false).set(store['address']).native.send_keys(:return)
     browser.find("button[data-track-pickup-store=\"#{store['store_number']}\"]", visible: false).click
-    browser.find('.store-locator-redirect__button', match: :first, visible: false).click
+    # This is the confirmation continue button that doesn't seem to be happy to work so lets just browse back to the main page
+    # browser.find('.store-locator-redirect__button', match: :first, visible: false).click
+    browser.visit target[1]['url']
+
     browser.find('button[data-cruller="timeslot-button"]', visible: false).click
 
     open_slots = browser.find_all('div[data-cruller="timeslot-selector-slot"]', visible: false)
