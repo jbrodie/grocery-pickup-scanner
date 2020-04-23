@@ -54,6 +54,7 @@ DEPENDENCIES
   capybara-screenshot (~> 1.0, >= 1.0.24)
   dotenv (~> 2.7, >= 2.7.5)
   json (~> 2.3)
+  launchy (~> 2.5)
   mail (~> 2.7, >= 2.7.1)
   openssl (~> 2.1, >= 2.1.2)
   selenium-webdriver (~> 3.142, >= 3.142.7)

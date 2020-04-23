@@ -1,7 +1,9 @@
 require 'byebug'
 require 'capybara'
+require 'capybara-screenshot'
 require 'dotenv'
 require 'json'
+require 'launchy'
 require 'mail'
 require 'nokogiri'
 require 'openssl'
@@ -24,16 +26,18 @@ Capybara.register_driver :selenium do |app|
         incognito
         disable-geolocation
         disable-popup-blocking
+        window-size=1920,1080
       ]
     )
   )
 end
 
-Capybara.javascript_driver = :chrome
 Capybara.configure do |config|  
   config.default_max_wait_time = 20 # seconds
   config.default_driver = :selenium
+  config.save_path = 'tmp/capybara'
 end
+
 
 # Standard Email Configuration
 options = { :address              => ENV['SERVER_ADDRESS'],
@@ -69,11 +73,11 @@ targets.each do |target|
       # Catch this as we don't need to react to the modal if it isn't there.
     end
 
-    browser.find('a[data-auid="store-locator-link"]').click
-    browser.find('.location-search__search__input').set(store['address']).native.send_keys(:return)
-    browser.find("button[data-track-pickup-store=\"#{store['store_number']}\"]").click
-    browser.find('.store-locator-redirect__button', match: :first).click
-    browser.find('button[data-cruller="timeslot-button"]').click
+    browser.find('a[data-auid="store-locator-link"]', match: :first, visible: false).click
+    browser.find('.location-search__search__input', visible: false).set(store['address']).native.send_keys(:return)
+    browser.find("button[data-track-pickup-store=\"#{store['store_number']}\"]", visible: false).click
+    browser.find('.store-locator-redirect__button', match: :first, visible: false).click
+    browser.find('button[data-cruller="timeslot-button"]', visible: false).click
 
     open_slots = browser.find_all('div[data-cruller="timeslot-selector-slot"]', visible: false)
 

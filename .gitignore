@@ -3,3 +3,4 @@ capybara*.html
 .env
 *.json
 groceries.rb
+/tmp

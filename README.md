@@ -17,6 +17,7 @@ Install Ruby 2.7.1 and Bundler
 ```
 rbenv install 2.7.1
 gem install bundler -v 2.1.4
+bundle install
 ```
 
 Copy over the sample `.env` and `targets.json` and customize your settings.
